@@ -1,0 +1,32 @@
+# Get the total bill amount
+myBill = float(input("What was the bill?: "))
+
+# Get the number of people
+numberOfPeople = int(input("How many people?: "))
+
+# Calculate the base amount each person owes
+answer = myBill / numberOfPeople
+answer = round(answer, 2)
+
+# Ask if the user wants to add a tip
+tip_answer = input("Want to add a tip? Y/N: ")
+
+if tip_answer == "Y" or tip_answer == "y":
+    # Get the tip percentage
+    tip_percent = int(input("What percentage of the bill do you want to tip?: "))
+
+    # Calculate the tip amount
+    tip_amount = (tip_percent / 100) * myBill
+
+    # Calculate the total bill including the tip
+    total_bill = myBill + tip_amount
+
+    # Print the total bill and the amount each person owes with the tip
+    print("The total bill is", total_bill)
+    print("You all owe with a tip", total_bill / numberOfPeople)
+elif tip_answer == "N" or tip_answer == "n":
+    # If no tip, just print the amount each person owes without the tip
+    print("Without a tip, You all owe", answer)
+else: 
+    # If the input is not recognized, print the amount without a tip
+    print("Without a tip, You would owe", answer)
