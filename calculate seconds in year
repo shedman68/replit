@@ -1,0 +1,20 @@
+def calculate_seconds_in_year(is_leap_year=False):
+    # Constants
+    seconds_per_minute = 60
+    minutes_per_hour = 60
+    hours_per_day = 24
+    days_regular_year = 365
+    days_leap_year = 366
+
+    # Calculate the number of seconds in a year
+    if is_leap_year:
+        return seconds_per_minute * minutes_per_hour * hours_per_day * days_leap_year
+    else:
+        return seconds_per_minute * minutes_per_hour * hours_per_day * days_regular_year
+
+# Example usage
+seconds_in_regular_year = calculate_seconds_in_year()
+seconds_in_leap_year = calculate_seconds_in_year(is_leap_year=True)
+
+print("Seconds in a regular year:", seconds_in_regular_year)
+print("Seconds in a leap year:", seconds_in_leap_year)
