@@ -1,0 +1,69 @@
+import random
+
+def get_player_choice():
+    """Get the player's choice (Rock, Paper, or Scissors)"""
+    while True:
+        player_choice = input("Enter your choice (rock, paper, scissors): ").lower()
+        if player_choice in ["rock", "paper", "scissors"]:
+            return player_choice
+        else:
+            print("Invalid choice. Please enter 'rock', 'paper', or 'scissors'.")
+
+def play_round():
+    """Play a single round of Rock, Paper, Scissors."""
+    choices = ["rock", "paper", "scissors"]
+    player1_choice = get_player_choice()
+    player2_choice = random.choice(choices)
+
+    print(f"Player 1 chooses: {player1_choice}")
+    print(f"Player 2 chooses: {player2_choice}")
+
+    # Determine the winner of the round
+    if player1_choice == player2_choice:
+        print("It's a tie!")
+        return "tie"
+    elif (
+        (player1_choice == "rock" and player2_choice == "scissors") or
+        (player1_choice == "paper" and player2_choice == "rock") or
+        (player1_choice == "scissors" and player2_choice == "paper")
+    ):
+        print("Player 1 wins!")
+        return "player1"
+    else:
+        print("Player 2 wins!")
+        return "player2"
+
+def play_game():
+    """Play the Rock, Paper, Scissors game."""
+    player1_score = 0
+    player2_score = 0
+    rounds_to_win = 3
+    round_number = 1
+
+    while True:
+        print(f"\n--- Round {round_number} ---")
+        winner = play_round()
+
+        if winner == "player1":
+            player1_score += 1
+        elif winner == "player2":
+            player2_score += 1
+
+        print(f"Player 1 Score: {player1_score}")
+        print(f"Player 2 Score: {player2_score}")
+
+        if player1_score == rounds_to_win:
+            print("Player 1 wins the game!")
+            break
+        elif player2_score == rounds_to_win:
+            print("Player 2 wins the game!")
+            break
+
+        round_number += 1
+
+    print("\n--- Final Scores ---")
+    print(f"Player 1 Final Score: {player1_score}")
+    print(f"Player 2 Final Score: {player2_score}")
+
+if __name__ == "__main__":
+    play_game()
